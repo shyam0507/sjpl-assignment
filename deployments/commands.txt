@@ -1,0 +1,34 @@
+// Push to docker hub
+
+sudo docker tag sjpl-configuration-service shyamnath/sjpl-configuration-service
+sudo docker push shyamnath/sjpl-configuration-service
+
+sudo docker tag sjpl-authentication-service shyamnath/sjpl-authentication-service
+sudo docker push shyamnath/sjpl-authentication-service
+
+sudo docker tag sjpl-dejule-service shyamnath/sjpl-dejule-service
+sudo docker push shyamnath/sjpl-dejule-service
+
+
+
+//Deploy
+
+kubectl create deployment sjpl-configuration-service --image=shyamnath/sjpl-configuration-service
+kubectl expose deployment sjpl-configuration-service --type=LoadBalancer --port=3000
+
+kubectl create deployment sjpl-authentication-service --image=shyamnath/sjpl-authentication-service
+kubectl expose deployment sjpl-authentication-service --type=LoadBalancer --port=3001
+
+kubectl create deployment sjpl-dejule-service --image=shyamnath/sjpl-dejule-service
+kubectl expose deployment sjpl-dejule-service --type=LoadBalancer --port=3002
+
+
+//Delete
+
+kubectl delete deployment sjpl-configuration-service
+
+
+//Debugging
+kubectl -n default describe pod sjpl-dejule-service-6c8b78cc45-bsvs2
+kubectl logs sjpl-authentication-service-8698d57957-zms2m
+kubectl logs sjpl-dejule-service
