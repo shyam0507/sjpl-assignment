@@ -1,0 +1,1 @@
+exports.AUTH_SERVICE_URL = "http://localhost:3001/v1.0/user/verify";
