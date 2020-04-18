@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const AccessToken = sequelize.define('AccessToken', {
-    userId: DataTypes.UUID,
+    userId: DataTypes.INTEGER,
     access: DataTypes.STRING,
     token: DataTypes.STRING
   }, {});
